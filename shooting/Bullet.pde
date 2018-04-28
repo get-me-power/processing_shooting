@@ -9,14 +9,17 @@ class Bullet {
     this.y = y;
     this.speed = speed;
   }
-  
-  void update(){
-   
-    y-=speed;
-    ellipse(x,y,10,10);
-    
+  public int getX(){//弾の座標を習得
+    return this.x;
+  }
+  public int getY(){//弾の座標を習得
+    return this.y;
   }
   
+  void update(){
+    y-=speed;
+    ellipse(x,y,10,10);
+  }
 }
   
   
