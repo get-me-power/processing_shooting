@@ -35,8 +35,8 @@ void draw() {
   
   // enemy.hit(bulletList);
   for (int i = 0; i < enemyList.size(); i++) { // enemyを生成する
-    enemyList.get(i).update();
     if ( enemyList.get(i).hit(bulletList) ) enemyList.remove(i);
+    else enemyList.get(i).update();
   }
   for (int i = bulletList.size() - 1; i >= 0; i--) {
     // bulletList.get(i);
