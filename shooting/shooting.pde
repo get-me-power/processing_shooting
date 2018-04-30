@@ -31,11 +31,14 @@ void draw() {
       player.shoot(bulletList);
     }
   }
-  //enemy.hit(bulletList);
-  for (int i=0; i<=10; i++) {//enemyを生成する
+
+  for (int i=0; i<enemyList.size(); i++) {//enemyを生成する
     enemyList.get(i).update();
+    if (enemyList.get(i).hit(bulletList) == true) {
+      enemyList.remove(i);
+    }
   }
-  for (int i = bulletList.size() -1; i>=0; i--) {
+  for (int i = bulletList.size() -1; i>=0; i--) {z
     //bulletList.get(i);
     bulletList.get(i).update();
   }
