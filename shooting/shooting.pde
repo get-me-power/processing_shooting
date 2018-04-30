@@ -1,44 +1,44 @@
-int keyStat; //キーの状態を格納する変数
+int keyStat; // キーの状態を格納する変数
 boolean key_flag = true;
-private ArrayList<Bullet> bulletList;//プライベート変数
+private ArrayList<Bullet> bulletList; // プライベート変数
 private ArrayList<Enemy> enemyList;
 
 Player player;
-//Enemy enemy;
+// Enemy enemy;
 
-//一番最初に一回だけ呼ばれる
+// 一番最初に一回だけ呼ばれる
 void setup() {
   size(960, 720);
   frameRate(60);
   rectMode(CENTER); // center mode
-  player = new Player(100, 200, 300, 2.5f);//インスタンス化:オブジェクトを生成する（実体化する）(今回はnew Player...）
-  //enemy =new Enemy(0,400,200,2.5f);
+  player = new Player(100, 200, 300, 2.5f); // インスタンス化:オブジェクトを生成する（実体化する）(今回はnew Player...）
+  // enemy = new Enemy(0, 400, 200, 2.5f);
   enemyList = new ArrayList<Enemy>();
   bulletList = new ArrayList<Bullet>();
-  for (int i = 0; i<=10; i++) {
-    enemyList.add(new Enemy(100, (int)random(400), (int)random(200), 2.5f));//ランダム関数の導入
+  for (int i = 0; i <= 10; i++) {
+    enemyList.add(new Enemy(100, (int)random(400), (int)random(200), 2.5f)); // ランダム関数の導入
   }
 }
-//毎フレーム呼ばれるもの
+// 毎フレーム呼ばれるもの
 void draw() {
   background(255, 255, 0);
   player.update();
   // enemy.update();
   fill(0, 0, 255);
-  text(frameCount, 900, 100);//フレームカウント
-  if ((keyStat&0x20)!=0) {
+  text(frameCount, 900, 100); // フレームカウント
+  if ((keyStat&0x20) != 0) {
     if (frameCount % 10 == 0) {
       player.shoot(bulletList);
     }
   }
   
-  //enemy.hit(bulletList);
-  for (int i=0; i<enemyList.size(); i++) {//enemyを生成する
+  // enemy.hit(bulletList);
+  for (int i = 0; i < enemyList.size(); i++) { // enemyを生成する
     enemyList.get(i).update();
-    if( enemyList.get(i).hit(bulletList) ) enemyList.remove(i);
+    if ( enemyList.get(i).hit(bulletList) ) enemyList.remove(i);
   }
-  for (int i = bulletList.size() -1; i>=0; i--) {
-    //bulletList.get(i);
+  for (int i = bulletList.size() - 1; i >= 0; i--) {
+    // bulletList.get(i);
     bulletList.get(i).update();
   }
 }
@@ -47,7 +47,7 @@ void keyPressed() {
   if (key_flag) {
     if (key == CODED) {
       switch(keyCode) {
-        //ビットセット
+        // ビットセット
       case UP:
         keyStat|=0x1;
         break;
@@ -89,7 +89,7 @@ void keyPressed() {
 void keyReleased() {
   if (key == CODED) {
     switch(keyCode) {
-      //ビットクリア
+      // ビットクリア
     case UP:
       keyStat&=~0x1;
       break;
