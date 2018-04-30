@@ -19,6 +19,7 @@ void setup() {
     enemyList.add(new Enemy(100, (int)random(400), (int)random(200), 2.5f)); // ランダム関数の導入
   }
 }
+
 // 毎フレーム呼ばれるもの
 void draw() {
   background(255, 255, 0);
@@ -44,45 +45,44 @@ void draw() {
 }
 
 void keyPressed() {
-  if (key_flag) {
-    if (key == CODED) {
-      switch(keyCode) {
-        // ビットセット
-      case UP:
-        keyStat|=0x1;
-        break;
-      case DOWN:
-        keyStat|=0x2;
-        break;
-      case LEFT:
-        keyStat|=0x4;
-        break;
-      case RIGHT:
-        keyStat|=0x8;
-        break;
-      case SHIFT:
-        keyStat|=0x10;
-        break;
-      }
-    }
-    switch(key) {
-    case 'z':
-    case 'Z':
-      keyStat|=0x20;
+  if (!key_flag) return;
+  if (key == CODED) {
+    switch(keyCode) {
+    // ビットセット
+    case UP:
+      keyStat|=0x1;
       break;
-    case 'x':
-    case 'X':
-      keyStat|=0x40;
+    case DOWN:
+      keyStat|=0x2;
       break;
-    case's':
-    case'S':
-      keyStat|=0x80;
+    case LEFT:
+      keyStat|=0x4;
       break;
-    case 'a':
-    case 'A':
-      keyStat|=0x100;
+    case RIGHT:
+      keyStat|=0x8;
+      break;
+    case SHIFT:
+      keyStat|=0x10;
       break;
     }
+  }
+  switch(key) {
+  case 'z':
+  case 'Z':
+    keyStat|=0x20;
+    break;
+  case 'x':
+  case 'X':
+    keyStat|=0x40;
+    break;
+  case's':
+  case'S':
+    keyStat|=0x80;
+    break;
+  case 'a':
+  case 'A':
+    keyStat|=0x100;
+    break;
   }
 }
 
