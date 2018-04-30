@@ -31,6 +31,6 @@ class Enemy {
   }
 
   void update() {
-    triangle( x, y-7, x -10, y+7, x+10, y+7);
+    triangle(x, y-7, x-10, y+7, x+10, y+7);
   }
 }
