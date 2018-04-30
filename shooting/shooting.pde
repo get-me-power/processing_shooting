@@ -38,7 +38,7 @@ void draw() {
       enemyList.remove(i);
     }
   }
-  for (int i = bulletList.size() -1; i>=0; i--) {z
+  for (int i = bulletList.size() -1; i>=0; i--) {
     //bulletList.get(i);
     bulletList.get(i).update();
   }
