@@ -24,8 +24,8 @@ class Enemy {
       bulletList.remove(i);
       if (this.hp <= 0) {
         //this.remove();
-        return  true;
-      } 
+        return true;
+      }
     }
     return false;
   }
