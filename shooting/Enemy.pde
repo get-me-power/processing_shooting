@@ -11,24 +11,21 @@ class Enemy {
   }
 
 
-  void hit(ArrayList<Bullet> bulletList) {
+  boolean hit(ArrayList<Bullet> bulletList) {
     for (int i = bulletList.size() -1; i>=0; i--) {
       //bulletList.get(i);
-      bulletList.get(i).update(); 
-      bulletList.get(i).getX();
-      bulletList.get(i).getY();
-      for (int j=0; j<=10; j++) { 
-        if (abs(bulletList.get(i).getX() - enemyList.get(j).x) <= 30 && abs(bulletList.get(i).getY() - enemyList.get(j).y) <= 30) {
-          this.hp -= 10;
-          bulletList.remove(i);
-          if (this.hp == 0) {
-            //this.remove();
-            if (this.hp <= 0) {
-            }
-          }
+      // bulletList.get(i).update(); 
+      // bulletList.get(i).getX();
+      // bulletList.get(i).getY();
+      if (abs(bulletList.get(i).getX() - this.x) <= 30 && abs(bulletList.get(i).getY() - this.y) <= 30) {
+        this.hp -= 10;
+        bulletList.remove(i);
+        if (this.hp <= 0) {
+          return true;
         }
       }
     }
+    return false;
   }
   void update() {
 

@@ -11,7 +11,7 @@ void setup() {
   size(960, 720);
   frameRate(60);
   rectMode(CENTER); // center mode
-  player= new Player(100, 200, 300, 2.5f);//インスタンス化:オブジェクトを生成する（実体化する）(今回はnew Player...）
+  player = new Player(100, 200, 300, 2.5f);//インスタンス化:オブジェクトを生成する（実体化する）(今回はnew Player...）
   //enemy =new Enemy(0,400,200,2.5f);
   enemyList = new ArrayList<Enemy>();
   bulletList = new ArrayList<Bullet>();
@@ -32,8 +32,9 @@ void draw() {
     }
   }
   //enemy.hit(bulletList);
-  for (int i=0; i<=10; i++) {//enemyを生成する
+  for (int i=0; i<enemyList.size(); i++) {//enemyを生成する
     enemyList.get(i).update();
+    if( enemyList.get(i).hit(bulletList) ) enemyList.remove(i);
   }
   for (int i = bulletList.size() -1; i>=0; i--) {
     //bulletList.get(i);
