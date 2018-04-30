@@ -10,7 +10,6 @@ class Enemy {
     this.speed = speed;
   }
 
-
   boolean hit(ArrayList<Bullet> bulletList) {
     for (int i = bulletList.size() -1; i>=0; i--) {
       //bulletList.get(i);
@@ -24,9 +23,16 @@ class Enemy {
           return true;
         }
       }
+      bulletList.remove(i);
+      if (this.hp <= 0) {
+        //this.remove();
+        return  true;
+      } 
     }
     return false;
   }
+
+
   void update() {
 
     triangle( x, y-7, x -10, y+7, x+10, y+7);
