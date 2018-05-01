@@ -29,8 +29,8 @@ class Enemy {
     return false;
   }
   
-   void shoot_enemy(ArrayList<Bullet> bulletList) {
-    bulletList.add(new Bullet(10, x, -y, 10f));//プレイヤーの弾と逆向きにする
+   void shoot_enemy(ArrayList<Bullet> enemyBulletList) {
+    enemyBulletList.add(new Bullet(10, x, y, -10f));//プレイヤーの弾と逆向きにする
   }
 
   void update() {

@@ -1,6 +1,7 @@
 int keyStat; // キーの状態を格納する変数
 boolean key_flag = true;
 private ArrayList<Bullet> bulletList; // プライベート変数
+private ArrayList<Bullet> enemyBulletList;
 private ArrayList<Enemy> enemyList;
 
 Player player;
@@ -15,6 +16,8 @@ void setup() {
   // enemy = new Enemy(0, 400, 200, 2.5f);
   enemyList = new ArrayList<Enemy>();
   bulletList = new ArrayList<Bullet>();
+  enemyBulletList = new ArrayList<Bullet>();
+
   for (int i = 0; i <= 10; i += 1) {// enemyを生成する
     enemyList.add(new Enemy(100, (int)random(400), (int)random(200), 2.5f)); // ランダム関数の導入
   }
@@ -33,20 +36,24 @@ void draw() {
     }
   }
 
-  // enemy.hit(bulletList);
+  // enemyList.sizeは敵の数
   for (int i = 0; i < enemyList.size(); i++) {
-    
-    if (frameCount % 10 == 0){
-      enemyList.get(i).shoot_enemy(bulletList);//enemyから弾が発射されない
+
+    if (frameCount % 10 == 0) {
+      enemyList.get(i).shoot_enemy(enemyBulletList);
     }
-    
+
     if ( enemyList.get(i).hit(bulletList) ) enemyList.remove(i);//この処理は...?
     else enemyList.get(i).update();
   }
-  
+
   for (int i = bulletList.size() - 1; i >= 0; i--) {
     // bulletList.get(i);
     bulletList.get(i).update();
+  }
+  for (int i = enemyBulletList.size() - 1; i >= 0; i--) {
+    enemyBulletList.get(i).update();
+ 
   }
 }
 
