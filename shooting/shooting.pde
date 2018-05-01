@@ -39,7 +39,7 @@ void draw() {
   // enemyList.sizeは敵の数
   for (int i = 0; i < enemyList.size(); i++) {
 
-    if (frameCount % 10 == 0) {
+    if (frameCount % 50 == 0) {
       enemyList.get(i).shoot_enemy(enemyBulletList);
     }
 
@@ -50,10 +50,17 @@ void draw() {
   for (int i = bulletList.size() - 1; i >= 0; i--) {
     // bulletList.get(i);
     bulletList.get(i).update();
+    if (bulletList.get(i).getY() > height ||  bulletList.get(i).getY() < 0) {
+      bulletList.remove(i);
+      print("消えた");
+    }
   }
   for (int i = enemyBulletList.size() - 1; i >= 0; i--) {
     enemyBulletList.get(i).update();
- 
+    if (enemyBulletList.get(i).getY () > height || enemyBulletList.get(i).getY() < 0 ) {
+      //print("消えた");
+      enemyBulletList.remove(i);
+    }
   }
 }
 
