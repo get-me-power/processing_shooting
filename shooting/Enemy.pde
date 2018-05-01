@@ -16,7 +16,7 @@ class Enemy {
       // bulletList.get(i).update(); 
       // bulletList.get(i).getX();
       // bulletList.get(i).getY();
-      if (abs(bulletList.get(i).getX() - this.x) <= 30 && abs(bulletList.get(i).getY() - this.y) <= 30) {
+      if (abs(bulletList.get(i).getX() - this.x) <= 20 && abs(bulletList.get(i).getY() - this.y) <= 20) {
         this.hp -= 10;
         bulletList.remove(i);
         if (this.hp <= 0) return true;
@@ -27,6 +27,10 @@ class Enemy {
       }
     }
     return false;
+  }
+  
+   void shoot_enemy(ArrayList<Bullet> bulletList) {
+    bulletList.add(new Bullet(10, x, -y, 10f));//プレイヤーの弾と逆向きにする
   }
 
   void update() {

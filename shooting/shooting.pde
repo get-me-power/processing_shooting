@@ -15,7 +15,7 @@ void setup() {
   // enemy = new Enemy(0, 400, 200, 2.5f);
   enemyList = new ArrayList<Enemy>();
   bulletList = new ArrayList<Bullet>();
-  for (int i = 0; i <= 10; i++) {
+  for (int i = 0; i <= 10; i += 1) {// enemyを生成する
     enemyList.add(new Enemy(100, (int)random(400), (int)random(200), 2.5f)); // ランダム関数の導入
   }
 }
@@ -29,15 +29,21 @@ void draw() {
   text(frameCount, 900, 100); // フレームカウント
   if ((keyStat&0x20) != 0) {
     if (frameCount % 10 == 0) {
-      player.shoot(bulletList);
+      player.shoot(bulletList); //shoot関数の呼び出し
     }
   }
-  
+
   // enemy.hit(bulletList);
-  for (int i = 0; i < enemyList.size(); i++) { // enemyを生成する
-    if ( enemyList.get(i).hit(bulletList) ) enemyList.remove(i);
+  for (int i = 0; i < enemyList.size(); i++) {
+    
+    if (frameCount % 10 == 0){
+      enemyList.get(i).shoot_enemy(bulletList);//enemyから弾が発射されない
+    }
+    
+    if ( enemyList.get(i).hit(bulletList) ) enemyList.remove(i);//この処理は...?
     else enemyList.get(i).update();
   }
+  
   for (int i = bulletList.size() - 1; i >= 0; i--) {
     // bulletList.get(i);
     bulletList.get(i).update();
@@ -48,7 +54,7 @@ void keyPressed() {
   if (!key_flag) return;
   if (key == CODED) {
     switch(keyCode) {
-    // ビットセット
+      // ビットセット
     case UP:
       keyStat|=0x1;
       break;
