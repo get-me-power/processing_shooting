@@ -17,7 +17,7 @@ class Enemy {
           abs(bulletList.get(i).getY() - this.y) <= 20) {
         this.hp -= 10;
         bulletList.remove(i);
-        return (this.hp <= 0);
+        if (this.hp <= 0) return true;
       }
       if (this.hp <= 0) {
         //this.remove();
