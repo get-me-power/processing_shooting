@@ -10,7 +10,7 @@ class Enemy {
     this.speed = speed;
   }
 
-  boolean hit(ArrayList<Bullet> bulletList) {
+  boolean shootdown(ArrayList<Bullet> bulletList) { //shootdownは撃墜
     for (int i = bulletList.size() - 1; i >= 0; i--) {
       
       if (abs(bulletList.get(i).getX() - this.x) <= 20 &&

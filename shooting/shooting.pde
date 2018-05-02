@@ -40,7 +40,7 @@ void draw() {
     if (frameCount % 50 == 0)
         enemyList.get(i).shoot_enemy(enemyBulletList);
 
-    if ( enemyList.get(i).hit(bulletList) ) enemyList.remove(i); // 被弾して hp が 0 になった敵を消す
+    if ( enemyList.get(i).shootdown(bulletList) ) enemyList.remove(i); // 被弾して hp が 0 になった敵を消す
     else enemyList.get(i).update();
   }
 
