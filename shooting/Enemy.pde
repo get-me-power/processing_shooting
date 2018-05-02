@@ -13,7 +13,8 @@ class Enemy {
   boolean hit(ArrayList<Bullet> bulletList) {
     for (int i = bulletList.size() - 1; i >= 0; i--) {
       
-      if (abs(bulletList.get(i).getX() - this.x) <= 20 && abs(bulletList.get(i).getY() - this.y) <= 20) {
+      if (abs(bulletList.get(i).getX() - this.x) <= 20 &&
+          abs(bulletList.get(i).getY() - this.y) <= 20) {
         this.hp -= 10;
         bulletList.remove(i);
         if (this.hp <= 0) return true;
@@ -28,7 +29,7 @@ class Enemy {
   
   
    void shoot_enemy(ArrayList<Bullet> enemyBulletList) {
-    enemyBulletList.add(new Bullet(10, x, y, -10f));//プレイヤーの弾と逆向きにする
+    enemyBulletList.add(new Bullet(10, x, y, -10f)); // プレイヤーの弾と逆向きにする
   }
 
   void update() {

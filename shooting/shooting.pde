@@ -30,37 +30,36 @@ void draw() {
   // enemy.update();
   fill(0, 0, 255);
   text(frameCount, 900, 100); // フレームカウント
-  if ((keyStat&0x20) != 0) {
-    if (frameCount % 10 == 0) {
-      player.shoot(bulletList); //shoot関数の呼び出し
-    }
-  }
+  
+  if ((keyStat&0x20) != 0 && frameCount % 10 == 0)
+      player.shoot(bulletList); // shoot関数の呼び出し
 
   // enemyList.sizeは敵の数
   for (int i = 0; i < enemyList.size(); i++) {
 
-    if (frameCount % 50 == 0) {
-      enemyList.get(i).shoot_enemy(enemyBulletList);
-    }
+    if (frameCount % 50 == 0)
+        enemyList.get(i).shoot_enemy(enemyBulletList);
 
-    if ( enemyList.get(i).hit(bulletList) ) enemyList.remove(i);//この処理は...?
+    if ( enemyList.get(i).hit(bulletList) ) enemyList.remove(i); // 被弾して hp が 0 になった敵を消す
     else enemyList.get(i).update();
   }
 
   for (int i = bulletList.size() - 1; i >= 0; i--) {
-    // bulletList.get(i);
     bulletList.get(i).update();
-    if (bulletList.get(i).getY() > height ||  bulletList.get(i).getY() < 0) {
-      bulletList.remove(i);
-      print("消えた");
-    }
+    
+    int x = bulletList.get(i).getX(),
+        y = bulletList.get(i).getY();
+    
+    if (y > height || y < 0 || x > width || x < 0) bulletList.remove(i);
   }
+  
   for (int i = enemyBulletList.size() - 1; i >= 0; i--) {
     enemyBulletList.get(i).update();
-    if (enemyBulletList.get(i).getY () > height || enemyBulletList.get(i).getY() < 0 ) {
-      //print("消えた");
-      enemyBulletList.remove(i);
-    }
+    
+    int x = enemyBulletList.get(i).getX(),
+        y = enemyBulletList.get(i).getY();
+    
+    if (y > height || y < 0 || x > width || x < 0) enemyBulletList.remove(i);
   }
 }
 
