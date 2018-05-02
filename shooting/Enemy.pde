@@ -16,7 +16,7 @@ class Enemy {
       if (abs(bulletList.get(i).getX() - this.x) <= 20 && abs(bulletList.get(i).getY() - this.y) <= 20) {
         this.hp -= 10;
         bulletList.remove(i);
-        if (this.hp <= 0) return true;
+        return (this.hp <= 0);
       }
       if (this.hp <= 0) {
         //this.remove();
