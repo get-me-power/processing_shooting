@@ -31,18 +31,14 @@ void draw() {
   fill(0, 0, 255);
   text(frameCount, 900, 100); // フレームカウント
   
-  if ((keyStat&0x20) != 0) {
-    if (frameCount % 10 == 0) {
+  if ((keyStat&0x20) != 0 && frameCount % 10 == 0)
       player.shoot(bulletList); // shoot関数の呼び出し
-    }
-  }
 
   // enemyList.sizeは敵の数
   for (int i = 0; i < enemyList.size(); i++) {
 
-    if (frameCount % 50 == 0) {
-      enemyList.get(i).shoot_enemy(enemyBulletList);
-    }
+    if (frameCount % 50 == 0)
+        enemyList.get(i).shoot_enemy(enemyBulletList);
 
     if ( enemyList.get(i).hit(bulletList) ) enemyList.remove(i); // 被弾して hp が 0 になった敵を消す
     else enemyList.get(i).update();

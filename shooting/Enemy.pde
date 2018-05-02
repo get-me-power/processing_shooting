@@ -13,7 +13,8 @@ class Enemy {
   boolean hit(ArrayList<Bullet> bulletList) {
     for (int i = bulletList.size() - 1; i >= 0; i--) {
       
-      if (abs(bulletList.get(i).getX() - this.x) <= 20 && abs(bulletList.get(i).getY() - this.y) <= 20) {
+      if (abs(bulletList.get(i).getX() - this.x) <= 20 &&
+          abs(bulletList.get(i).getY() - this.y) <= 20) {
         this.hp -= 10;
         bulletList.remove(i);
         return (this.hp <= 0);
