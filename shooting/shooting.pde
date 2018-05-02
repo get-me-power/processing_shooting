@@ -33,7 +33,7 @@ void draw() {
   
   if ((keyStat&0x20) != 0) {
     if (frameCount % 10 == 0) {
-      player.shoot(bulletList); //shoot関数の呼び出し
+      player.shoot(bulletList); // shoot関数の呼び出し
     }
   }
 
@@ -44,7 +44,7 @@ void draw() {
       enemyList.get(i).shoot_enemy(enemyBulletList);
     }
 
-    if ( enemyList.get(i).hit(bulletList) ) enemyList.remove(i); // この処理は...?
+    if ( enemyList.get(i).hit(bulletList) ) enemyList.remove(i); // 被弾して hp が 0 になった敵を消す
     else enemyList.get(i).update();
   }
 
