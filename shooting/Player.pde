@@ -10,6 +10,22 @@ class Player {
     this.y = y;
     this.speed = speed;
   }
+  
+  boolean hit(ArrayList<Bullet> enemyBulletList) {
+    for( int i = enemyBulletList.size() - 1;i >= 0; i--) {
+      
+      if(abs(enemyBulletList.get(i).getX() - this.x) <= 20 &&
+          abs(enemyBulletList.get(i).getY() - this.y) <= 20) {
+         this.hp -= 10;
+         if (this.hp <= 0) return true;
+         }
+         if (this.hp <= 0) {
+        //this.remove();
+        return true;
+      }
+    }
+    return false;
+  }
 
   public void move() {
     if ((keyStat&0x1) != 0) y -= speed;
