@@ -10,16 +10,18 @@ class Player {
     this.y = y;
     this.speed = speed;
   }
-  
+
   boolean hit(ArrayList<Bullet> enemyBulletList) {
-    for( int i = enemyBulletList.size() - 1;i >= 0; i--) {
-      
-      if(abs(enemyBulletList.get(i).getX() - this.x) <= 20 &&
-          abs(enemyBulletList.get(i).getY() - this.y) <= 20) {
-         this.hp -= 10;
-         if (this.hp <= 0) return true;
-         }
-         if (this.hp <= 0) {
+    for ( int i = enemyBulletList.size() - 1; i >= 0; i--) {
+
+      if (abs(enemyBulletList.get(i).getX() - this.x) <= 20 &&
+        abs(enemyBulletList.get(i).getY() - this.y) <= 20) {
+        this.hp -= 10;
+        enemyBulletList.remove(i);
+        
+        if (this.hp <= 0) return true;
+      }
+      if (this.hp <= 0) {
         //this.remove();
         return true;
       }
@@ -33,7 +35,7 @@ class Player {
     if ((keyStat&0x4) != 0) x -= speed;
     if ((keyStat&0x8) != 0) x += speed;
   }
-  
+
   public void shoot(ArrayList<Bullet> bulletList) {
     bulletList.add(new Bullet(10, x, y, 10f));
   }
