@@ -37,11 +37,11 @@ class Enemy {
   void update() {
     x += 5 * cos(this.theta); // 敵の移動
     y += 5 * sin(this.theta);
-    if (y > height || y < 0 || x > width || x < 0) {
-      x = -x;
-      y = -y;
+    if ( y > height || y < 0 ) {
+      this.theta = 2*PI - this.theta;
+    } else if ( x > width || x < 0 ) {
+      this.theta = PI - this.theta;
     }
-
     triangle(x, y-7, x-10, y+7, x+10, y+7);
   }
 }
