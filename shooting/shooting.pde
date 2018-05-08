@@ -19,7 +19,7 @@ void setup() {
   enemyBulletList = new ArrayList<Bullet>();
 
   for (int i = 0; i <= 10; i += 1) {// enemyを生成する
-    enemyList.add(new Enemy(100, (int)random(400), (int)random(200), 2.5f)); // ランダム関数の導入
+    enemyList.add(new Enemy(100, (int)random(900), (int)random(200), 2.5f)); // ランダム関数の導入
   }
 }
 
