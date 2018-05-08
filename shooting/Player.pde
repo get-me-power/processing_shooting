@@ -14,8 +14,8 @@ class Player {
   boolean hit(ArrayList<Bullet> enemyBulletList) {
     for ( int i = enemyBulletList.size() - 1; i >= 0; i--) {
 
-      if (abs(enemyBulletList.get(i).getX() - this.x) <= 20 &&
-        abs(enemyBulletList.get(i).getY() - this.y) <= 20) {
+      if (abs(enemyBulletList.get(i).getX() - this.x) <= 10 &&
+        abs(enemyBulletList.get(i).getY() - this.y) <= 10) {
         this.hp -= 10;
         enemyBulletList.remove(i);
         

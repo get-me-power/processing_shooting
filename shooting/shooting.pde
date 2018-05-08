@@ -12,7 +12,7 @@ void setup() {
   size(960, 720);
   frameRate(60);
   rectMode(CENTER); // center mode
-  player = new Player(100, 200, 300, 2.5f); // インスタンス化:オブジェクトを生成する（実体化する）(今回はnew Player...）
+  player = new Player(150, 300, 600, 2.5f); // インスタンス化:オブジェクトを生成する（実体化する）(今回はnew Player...）
   // enemy = new Enemy(0, 400, 200, 2.5f);
   enemyList = new ArrayList<Enemy>();
   bulletList = new ArrayList<Bullet>();
@@ -26,15 +26,15 @@ void setup() {
 // 毎フレーム呼ばれるもの
 void draw() {
   background(255, 255, 0);
-  
+
   player.update();
- 
+
   fill(0, 0, 255);
   text(frameCount, 900, 100); // フレームカウント
 
   if ((keyStat&0x20) != 0 && frameCount % 10 == 0)
     player.shoot(bulletList); // shoot関数の呼び出し
-    
+
 
   // enemyList.sizeは敵の数
   for (int i = 0; i < enemyList.size(); i++) {
@@ -62,9 +62,11 @@ void draw() {
       y = enemyBulletList.get(i).getY();
 
     if (y > height || y < 0 || x > width || x < 0) enemyBulletList.remove(i);
-    
-    if( player.hit(enemyBulletList) == true ){//自機の当たり判定を追加
-     background(0,0,0);//ゲームオーバーなら真っ暗にする
+
+    if ( player.hit(enemyBulletList) == true ) {//自機の当たり判定を追加
+      background(0, 0, 0);//ゲームオーバーなら真っ暗にする
+      textSize(100);
+      text("Game Over", 300, 300);
     }
   }
 }
