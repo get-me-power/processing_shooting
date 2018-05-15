@@ -44,7 +44,7 @@ class Enemy {
       this.theta = 2*PI - this.theta;
     } else if ( x + 10 > width || x -10< 0 ) {
       if(x-10<0){
-        x=10;
+        x=10;//座標の調整
       }
       this.theta = PI - this.theta;//x軸の変更だから2pi
     }

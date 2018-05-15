@@ -3,9 +3,8 @@ boolean key_flag = true;
 private ArrayList<Bullet> bulletList; // プライベート変数
 private ArrayList<Bullet> enemyBulletList;
 private ArrayList<Enemy> enemyList;
-
+Hp_gauge hp_gauge;
 Player player;
-// Enemy enemy;
 
 // 一番最初に一回だけ呼ばれる
 void setup() {
@@ -43,7 +42,9 @@ void draw() {
       enemyList.get(i).shoot_enemy(enemyBulletList);
 
     if ( enemyList.get(i).shootdown(bulletList) ) enemyList.remove(i); // 被弾して hp が 0 になった敵を消す
-    else enemyList.get(i).update();
+    else {
+      enemyList.get(i).update();
+    }
   }
 
   for (int i = bulletList.size() - 1; i >= 0; i--) {
