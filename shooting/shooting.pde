@@ -12,12 +12,12 @@ void setup() {
   frameRate(60);
   rectMode(CENTER); // center mode
   player = new Player(150, 300, 600, 2.5f); // インスタンス化:オブジェクトを生成する（実体化する）(今回はnew Player...）
-  hpgauge = new Hpgauge(150,0,0);
+  hpgauge = new Hpgauge(0,0);//hpゲージの作成
   enemyList = new ArrayList<Enemy>();
   bulletList = new ArrayList<Bullet>();
   enemyBulletList = new ArrayList<Bullet>();
 
-  for (int i = 0; i <= 10; i += 1) {// enemyを生成する
+  for (int i = 0; i <= 1; i += 1) {// enemyを生成する
     enemyList.add(new Enemy(100, (int)random(900), (int)random(200), 2.5f)); // ランダム関数の導入
   }
 }

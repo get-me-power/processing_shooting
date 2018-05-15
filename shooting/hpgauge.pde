@@ -3,13 +3,14 @@ class Hpgauge {
   int x, y;
 
 
-  public Hpgauge(int hp, int x, int y) {
-    this.hp = hp;
+  public Hpgauge(int x, int y) {
     this.x = x;
     this.y = y;
   }
-
+  public void hitgauge() {
+    x = player.hp;
+  }
   public void update() {
-    rect(600,300,150-x,150-y);
+    rect(900, 0, player.hp, 50-y);
   }
 }
