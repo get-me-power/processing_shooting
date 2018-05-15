@@ -3,7 +3,7 @@ boolean key_flag = true;
 private ArrayList<Bullet> bulletList; // プライベート変数
 private ArrayList<Bullet> enemyBulletList;
 private ArrayList<Enemy> enemyList;
-Hp_gauge hp_gauge;
+Hpgauge hpgauge;
 Player player;
 
 // 一番最初に一回だけ呼ばれる
@@ -12,7 +12,7 @@ void setup() {
   frameRate(60);
   rectMode(CENTER); // center mode
   player = new Player(150, 300, 600, 2.5f); // インスタンス化:オブジェクトを生成する（実体化する）(今回はnew Player...）
-  // enemy = new Enemy(0, 400, 200, 2.5f);
+  hpgauge = new Hpgauge(150,0,0);
   enemyList = new ArrayList<Enemy>();
   bulletList = new ArrayList<Bullet>();
   enemyBulletList = new ArrayList<Bullet>();
@@ -27,6 +27,7 @@ void draw() {
   background(255, 255, 0);
 
   player.update();
+  hpgauge.update();
 
   fill(0, 0, 255);
   text(frameCount, 900, 100); // フレームカウント
