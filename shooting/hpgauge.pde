@@ -11,6 +11,7 @@ class Hpgauge {
     x = player.hp;
   }
   public void update() {
+    fill(255,0,0);
     rect(900, 0, player.hp, 50-y);
   }
 }
