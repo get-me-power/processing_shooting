@@ -7,11 +7,9 @@ class Hpgauge {
     this.x = x;
     this.y = y;
   }
-  public void hitgauge() {
-    x = player.hp;
-  }
-  public void update() {
+  
+  public void update(int playerhp) {
     fill(255,0,0);
-    rect(900, 0, player.hp, 50-y);
+    rect(900, 0, playerhp, 50-y);
   }
 }
