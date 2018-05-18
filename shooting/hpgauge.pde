@@ -9,7 +9,7 @@ class Hpgauge {
   }
   
   public void update(int playerhp) {
-    fill(255,0,0);
+    fill(255,0,0);//HPゲージの色の変更
     rect(900, 0, playerhp, 50-y);
   }
 }

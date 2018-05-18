@@ -41,6 +41,7 @@ class Player {
   }
 
   public void update() {
+    fill(0,0,0);//自機の色の変更
     move();
     triangle(x, y-7, x-10, y+7, x+10, y+7);
   }
